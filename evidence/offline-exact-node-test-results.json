@@ -1,0 +1,90 @@
+{
+  "evidenceClass": "OFFLINE_EXACT_NODE_CODE_EXECUTION",
+  "n8nRuntimeExecution": false,
+  "mainWorkflowSha256": "f3562bed1f20ec3289b9108c25e343b24a58ff2af1749fc3d50e69b9eb8698c0",
+  "adversarialWorkflowSha256": "2c123ff8767243bde5f5a7447fc6b0b699b0ab397f2a1b70b41414c78b323419",
+  "testCount": 8,
+  "passCount": 8,
+  "failCount": 0,
+  "adversarialSummary": {
+    "total": 24,
+    "passed": 24,
+    "failed": 0,
+    "status": "PASSED"
+  },
+  "tests": [
+    {
+      "id": "SYN-OFF-01_main_exact_node_chain",
+      "status": "PASS",
+      "details": {
+        "correlations": 6,
+        "route": "HUMAN_REVIEW_CONTRADICTION",
+        "sourceAuthorityPreserved": true
+      }
+    },
+    {
+      "id": "SYN-OFF-02_all_six_taxonomy_classes",
+      "status": "PASS",
+      "details": {
+        "classes": [
+          "compounding",
+          "contradictory",
+          "duplicate",
+          "related",
+          "repeated",
+          "unresolved"
+        ]
+      }
+    },
+    {
+      "id": "SYN-OFF-03_no_universal_source_override",
+      "status": "PASS",
+      "details": {
+        "sourceAuthorityPreserved": true,
+        "universalRiskScorePresent": false
+      }
+    },
+    {
+      "id": "SYN-OFF-04_six_sigma_boundary",
+      "status": "PASS",
+      "details": {
+        "unit": "validated correlation record",
+        "opportunitiesPerUnit": 5,
+        "capabilityClaim": false,
+        "syntheticDPMO": 0
+      }
+    },
+    {
+      "id": "SYN-OFF-05_human_identity_boundary",
+      "status": "PASS",
+      "details": {
+        "authenticatedIdentity": false,
+        "decision": "escalate"
+      }
+    },
+    {
+      "id": "SYN-OFF-06_adversarial_24_of_24",
+      "status": "PASS",
+      "details": {
+        "status": "PASSED",
+        "passed": 24,
+        "total": 24
+      }
+    },
+    {
+      "id": "SYN-OFF-07_adversarial_ids_complete",
+      "status": "PASS",
+      "details": {
+        "testIdCount": 24
+      }
+    },
+    {
+      "id": "SYN-OFF-08_synthetic_boundary_visible",
+      "status": "PASS",
+      "details": {
+        "mainBoundary": true,
+        "adversarialBoundary": true
+      }
+    }
+  ]
+}

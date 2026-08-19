@@ -1,0 +1,460 @@
+{
+  "name": "VANTIX Synthesis - Cross-Project Governed Correlation v0.1",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "syn-01",
+      "name": "01 Manual Trigger - Synthesis Portfolio Preview",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const fixture={\"fixtureVersion\":\"1.0.0\",\"syntheticData\":true,\"signals\":[{\"sourceProject\":\"P1_FLOW_INTEGRITY\",\"sourceDomain\":\"FLOW_INTEGRITY\",\"sourceRecordId\":\"P1-FI-001\",\"sourceRunId\":\"SYN-P1-001\",\"sourceSchemaVersion\":\"1.0.0\",\"observedAt\":\"2026-08-09T08:00:00Z\",\"entityKey\":\"ACCOUNT-ALPHA\",\"outcomeKey\":\"ONBOARDING_VALUE\",\"controlKey\":\"CRM_GOVERNANCE_DESCRIPTION\",\"claimKey\":null,\"claimValue\":null,\"status\":\"OPEN_GOVERNANCE_FINDING\",\"severity\":\"low\",\"evidenceRefs\":[\"EVD-P1-001\"],\"evidenceFingerprint\":\"fp-governance-001\",\"provenance\":{\"repository\":\"P1_FLOW_INTEGRITY\",\"artifactPath\":\"synthetic/P1-FI-001\",\"evidenceClass\":\"SYNTHETIC_FIXTURE\"},\"authoritativeFields\":[\"status\",\"severity\"],\"metadata\":{\"description\":\"Synthetic governance signal used only for Synthesis testing.\"}},{\"sourceProject\":\"P1_FLOW_INTEGRITY\",\"sourceDomain\":\"FLOW_INTEGRITY\",\"sourceRecordId\":\"P1-FI-001-DUP\",\"sourceRunId\":\"SYN-P1-002\",\"sourceSchemaVersion\":\"1.0.0\",\"observedAt\":\"2026-08-09T08:01:00Z\",\"entityKey\":\"ACCOUNT-ALPHA\",\"outcomeKey\":\"ONBOARDING_VALUE\",\"controlKey\":\"CRM_GOVERNANCE_DESCRIPTION\",\"claimKey\":null,\"claimValue\":null,\"status\":\"OPEN_GOVERNANCE_FINDING\",\"severity\":\"low\",\"evidenceRefs\":[\"EVD-P1-001\"],\"evidenceFingerprint\":\"fp-governance-001\",\"provenance\":{\"repository\":\"P1_FLOW_INTEGRITY\",\"artifactPath\":\"synthetic/P1-FI-001-DUP\",\"evidenceClass\":\"SYNTHETIC_FIXTURE\"},\"authoritativeFields\":[\"status\",\"severity\"],\"metadata\":{\"description\":\"Synthetic duplicate for taxonomy validation.\"}},{\"sourceProject\":\"P2_AGILE_DELIVERY\",\"sourceDomain\":\"AGILE_DELIVERY\",\"sourceRecordId\":\"P2-AD-101\",\"sourceRunId\":\"SYN-P2-101\",\"sourceSchemaVersion\":\"1.0.0\",\"observedAt\":\"2026-08-09T08:10:00Z\",\"entityKey\":\"ACCOUNT-ALPHA\",\"outcomeKey\":\"ONBOARDING_VALUE\",\"controlKey\":\"DELIVERY_READINESS\",\"claimKey\":null,\"claimValue\":null,\"status\":\"BLOCKED_EVIDENCE_GAP\",\"severity\":\"high\",\"evidenceRefs\":[\"EVD-P2-101\"],\"evidenceFingerprint\":\"fp-delivery-101\",\"provenance\":{\"repository\":\"P2_AGILE_DELIVERY\",\"artifactPath\":\"synthetic/P2-AD-101\",\"evidenceClass\":\"SYNTHETIC_FIXTURE\"},\"authoritativeFields\":[\"status\",\"severity\"],\"metadata\":{\"iteration\":1}},{\"sourceProject\":\"P2_AGILE_DELIVERY\",\"sourceDomain\":\"AGILE_DELIVERY\",\"sourceRecordId\":\"P2-AD-102\",\"sourceRunId\":\"SYN-P2-102\",\"sourceSchemaVersion\":\"1.0.0\",\"observedAt\":\"2026-08-09T10:10:00Z\",\"entityKey\":\"ACCOUNT-ALPHA\",\"outcomeKey\":\"ONBOARDING_VALUE\",\"controlKey\":\"DELIVERY_READINESS\",\"claimKey\":null,\"claimValue\":null,\"status\":\"BLOCKED_EVIDENCE_GAP\",\"severity\":\"high\",\"evidenceRefs\":[\"EVD-P2-102\"],\"evidenceFingerprint\":\"fp-delivery-102\",\"provenance\":{\"repository\":\"P2_AGILE_DELIVERY\",\"artifactPath\":\"synthetic/P2-AD-102\",\"evidenceClass\":\"SYNTHETIC_FIXTURE\"},\"authoritativeFields\":[\"status\",\"severity\"],\"metadata\":{\"iteration\":2}},{\"sourceProject\":\"P3_CONTROL_VALUE\",\"sourceDomain\":\"CONTROL_VALUE\",\"sourceRecordId\":\"P3-CV-201\",\"sourceRunId\":\"SYN-P3-201\",\"sourceSchemaVersion\":\"1.0.0\",\"observedAt\":\"2026-08-09T08:20:00Z\",\"entityKey\":\"ACCOUNT-ALPHA\",\"outcomeKey\":\"ONBOARDING_VALUE\",\"controlKey\":\"COMMITMENT_CLOSURE\",\"claimKey\":\"ONBOARDING_OUTCOME_VERIFIED\",\"claimValue\":false,\"status\":\"OUTCOME_NOT_VERIFIED\",\"severity\":\"high\",\"evidenceRefs\":[\"EVD-P3-201\"],\"evidenceFingerprint\":\"fp-control-value-201\",\"provenance\":{\"repository\":\"P3_CONTROL_VALUE\",\"artifactPath\":\"synthetic/P3-CV-201\",\"evidenceClass\":\"SYNTHETIC_FIXTURE\"},\"authoritativeFields\":[\"status\",\"severity\",\"claimValue\"],\"metadata\":{}},{\"sourceProject\":\"P4_ATTESTOR\",\"sourceDomain\":\"ATTESTOR_COMMITMENT_ASSURANCE\",\"sourceRecordId\":\"P4-CA-301\",\"sourceRunId\":\"SYN-P4-301\",\"sourceSchemaVersion\":\"1.0.0\",\"observedAt\":\"2026-08-09T08:22:00Z\",\"entityKey\":\"ACCOUNT-ALPHA\",\"outcomeKey\":\"ONBOARDING_VALUE\",\"controlKey\":\"ATTESTOR_COMMITMENT\",\"claimKey\":\"ONBOARDING_OUTCOME_VERIFIED\",\"claimValue\":true,\"status\":\"OUTCOME_CLAIM_VERIFIED\",\"severity\":\"medium\",\"evidenceRefs\":[\"EVD-P4-CA-301\"],\"evidenceFingerprint\":\"fp-attestor-ca-301\",\"provenance\":{\"repository\":\"P4_ATTESTOR\",\"artifactPath\":\"synthetic/P4-CA-301\",\"evidenceClass\":\"SYNTHETIC_FIXTURE\"},\"authoritativeFields\":[\"status\",\"severity\",\"claimValue\"],\"metadata\":{}},{\"sourceProject\":\"P4_ATTESTOR\",\"sourceDomain\":\"ATTESTOR_CUSTOMER_MOMENTUM\",\"sourceRecordId\":\"P4-CM-302\",\"sourceRunId\":\"SYN-P4-302\",\"sourceSchemaVersion\":\"1.0.0\",\"observedAt\":\"2026-08-09T08:30:00Z\",\"entityKey\":\"ACCOUNT-ALPHA\",\"outcomeKey\":\"ONBOARDING_VALUE\",\"controlKey\":\"CUSTOMER_MOMENTUM\",\"claimKey\":null,\"claimValue\":null,\"status\":\"DETERIORATING\",\"severity\":\"high\",\"evidenceRefs\":[\"EVD-P4-CM-302\"],\"evidenceFingerprint\":\"fp-attestor-cm-302\",\"provenance\":{\"repository\":\"P4_ATTESTOR\",\"artifactPath\":\"synthetic/P4-CM-302\",\"evidenceClass\":\"SYNTHETIC_FIXTURE\"},\"authoritativeFields\":[\"status\",\"severity\"],\"metadata\":{}},{\"sourceProject\":\"P4_ATTESTOR\",\"sourceDomain\":\"ATTESTOR_SERVICE_RECOVERY\",\"sourceRecordId\":\"P4-SR-401\",\"sourceRunId\":\"SYN-P4-401\",\"sourceSchemaVersion\":\"1.0.0\",\"observedAt\":\"2026-08-09T09:00:00Z\",\"entityKey\":\"ACCOUNT-BETA\",\"outcomeKey\":\"SERVICE_STABILITY\",\"controlKey\":\"RECOVERY_STATE\",\"claimKey\":null,\"claimValue\":null,\"status\":\"MONITOR_RECOVERY\",\"severity\":\"medium\",\"evidenceRefs\":[\"EVD-P4-SR-401\"],\"evidenceFingerprint\":\"fp-attestor-sr-401\",\"provenance\":{\"repository\":\"P4_ATTESTOR\",\"artifactPath\":\"synthetic/P4-SR-401\",\"evidenceClass\":\"SYNTHETIC_FIXTURE\"},\"authoritativeFields\":[\"status\",\"severity\"],\"metadata\":{}}]};\nreturn [{json:{\n  synthesisRunId:'SYNTH-'+new Date().toISOString().replace(/\\D/g,'').slice(0,14),\n  sourceManifestVersion:'1.0.0',\n  syntheticData:true,\n  signals:fixture.signals,\n  audit:[],\n  errors:[]\n}}];"
+      },
+      "id": "syn-02",
+      "name": "02 Load Synthetic Source Signals",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        250,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst allowedProjects=new Set(['P1_FLOW_INTEGRITY','P2_AGILE_DELIVERY','P3_CONTROL_VALUE','P4_ATTESTOR']);\nconst allowedDomains=new Set(['FLOW_INTEGRITY','AGILE_DELIVERY','CONTROL_VALUE','ATTESTOR_COMMITMENT_ASSURANCE','ATTESTOR_SERVICE_RECOVERY','ATTESTOR_CUSTOMER_MOMENTUM']);\nconst required=['sourceProject','sourceDomain','sourceRecordId','sourceSchemaVersion','observedAt','entityKey','outcomeKey','status','severity','evidenceRefs','provenance','authoritativeFields'];\nconst errors=[];\nfor(const x of s.signals){\n  for(const k of required){ if(x[k]===undefined || x[k]===null || x[k]==='') errors.push(`${x.sourceRecordId||'UNKNOWN'}:missing:${k}`); }\n  if(!allowedProjects.has(x.sourceProject)) errors.push(`${x.sourceRecordId}:unknown_project`);\n  if(!allowedDomains.has(x.sourceDomain)) errors.push(`${x.sourceRecordId}:unknown_domain`);\n  if(!Array.isArray(x.evidenceRefs)||!x.evidenceRefs.length) errors.push(`${x.sourceRecordId}:missing_evidence_refs`);\n  if(!x.provenance?.repository||!x.provenance?.artifactPath||!x.provenance?.evidenceClass) errors.push(`${x.sourceRecordId}:invalid_provenance`);\n  if(!Array.isArray(x.authoritativeFields)||!x.authoritativeFields.length) errors.push(`${x.sourceRecordId}:missing_authoritative_fields`);\n}\ns.sourceContract={valid:errors.length===0,errors};\ns.audit.push({step:'SOURCE_CONTRACT',valid:errors.length===0,errorCount:errors.length});\nif(errors.length) throw new Error('SYNTHESIS_SOURCE_CONTRACT_FAILED:'+errors.join('|'));\nreturn [{json:s}];\n"
+      },
+      "id": "syn-03",
+      "name": "03 Validate Source Contracts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\ns.normalizedSignals=s.signals.map(x=>({\n  ...x,\n  sourceProject:String(x.sourceProject),\n  sourceDomain:String(x.sourceDomain),\n  sourceRecordId:String(x.sourceRecordId),\n  entityKey:String(x.entityKey),\n  outcomeKey:String(x.outcomeKey),\n  controlKey:x.controlKey?String(x.controlKey):null,\n  claimKey:x.claimKey?String(x.claimKey):null,\n  evidenceRefs:[...new Set(x.evidenceRefs.map(String))].sort(),\n  authoritativeFields:[...new Set(x.authoritativeFields.map(String))].sort()\n}));\ns.audit.push({step:'NORMALIZE',signalCount:s.normalizedSignals.length});\nreturn [{json:s}];\n"
+      },
+      "id": "syn-04",
+      "name": "04 Normalize Source Facts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        750,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst errors=[];\nconst now=new Date('2026-08-09T12:00:00Z').getTime();\nfor(const x of s.normalizedSignals){\n  const ts=Date.parse(x.observedAt);\n  if(!Number.isFinite(ts)) errors.push(`${x.sourceRecordId}:bad_timestamp`);\n  if(x.provenance.evidenceClass!=='SYNTHETIC_FIXTURE') errors.push(`${x.sourceRecordId}:unexpected_fixture_evidence_class`);\n  if(x.evidenceRefs.some(r=>!/^EVD-/.test(r))) errors.push(`${x.sourceRecordId}:bad_evidence_ref`);\n  if(now-ts>1000*60*60*24*7) errors.push(`${x.sourceRecordId}:stale_evidence`);\n}\ns.evidenceGate={valid:errors.length===0,errors};\ns.audit.push({step:'EVIDENCE_GATE',valid:errors.length===0,errorCount:errors.length});\nif(errors.length) throw new Error('SYNTHESIS_EVIDENCE_GATE_FAILED:'+errors.join('|'));\nreturn [{json:s}];\n"
+      },
+      "id": "syn-05",
+      "name": "05 Evidence & Provenance Gate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst sig=s.normalizedSignals;\nconst candidates=[];\nfunction add(id,recordIds){candidates.push({candidateId:id,sourceRecordIds:recordIds});}\nconst p1=sig.find(x=>x.sourceRecordId==='P1-FI-001');\nconst p1d=sig.find(x=>x.sourceRecordId==='P1-FI-001-DUP');\nconst p2a=sig.find(x=>x.sourceRecordId==='P2-AD-101');\nconst p2b=sig.find(x=>x.sourceRecordId==='P2-AD-102');\nconst p3=sig.find(x=>x.sourceRecordId==='P3-CV-201');\nconst p4ca=sig.find(x=>x.sourceRecordId==='P4-CA-301');\nconst p4cm=sig.find(x=>x.sourceRecordId==='P4-CM-302');\nconst p4sr=sig.find(x=>x.sourceRecordId==='P4-SR-401');\nadd('CAND-DUP',[p1.sourceRecordId,p1d.sourceRecordId]);\nadd('CAND-REP',[p2a.sourceRecordId,p2b.sourceRecordId]);\nadd('CAND-REL',[p1.sourceRecordId,p2a.sourceRecordId]);\nadd('CAND-CMP',[p1.sourceRecordId,p2a.sourceRecordId,p3.sourceRecordId,p4cm.sourceRecordId]);\nadd('CAND-CON',[p3.sourceRecordId,p4ca.sourceRecordId]);\nadd('CAND-UNR',[p4sr.sourceRecordId]);\ns.candidates=candidates;\ns.audit.push({step:'GENERATE_CANDIDATES',candidateCount:candidates.length});\nreturn [{json:s}];\n"
+      },
+      "id": "syn-06",
+      "name": "06 Generate Deterministic Correlation Candidates",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1250,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst byId=Object.fromEntries(s.normalizedSignals.map(x=>[x.sourceRecordId,x]));\nconst out=[];\nconst routeFor={duplicate:'NO_ACTION_DUPLICATE',repeated:'OBSERVE_REPEATED',related:'OBSERVE_RELATED',compounding:'HUMAN_REVIEW_COMPOUNDING',contradictory:'HUMAN_REVIEW_CONTRADICTION',unresolved:'REQUEST_MORE_EVIDENCE'};\nfor(const c of s.candidates){\n  const xs=c.sourceRecordIds.map(id=>byId[id]);\n  let cls='unresolved',reason='Insufficient evidence for a stronger correlation class.';\n  const fps=xs.map(x=>x.evidenceFingerprint).filter(Boolean);\n  const sameEntity=xs.every(x=>x.entityKey===xs[0].entityKey);\n  const sameOutcome=xs.every(x=>x.outcomeKey===xs[0].outcomeKey);\n  const projects=new Set(xs.map(x=>x.sourceProject));\n  const claims=xs.filter(x=>x.claimKey);\n  const sameClaim=claims.length>=2 && claims.every(x=>x.claimKey===claims[0].claimKey);\n  const claimVals=new Set(claims.map(x=>JSON.stringify(x.claimValue)));\n  const sameControl=xs.length>=2 && xs.every(x=>x.controlKey===xs[0].controlKey);\n  const negativeStates=xs.filter(x=>/BLOCK|NOT_VERIFIED|DETERIORAT|OPEN_/i.test(x.status)).length;\n\n  if(xs.length>=2 && fps.length===xs.length && new Set(fps).size===1){\n    cls='duplicate'; reason='Distinct source records carry the same evidence fingerprint.';\n  } else if(xs.length>=2 && sameEntity && sameOutcome && sameControl && xs.every(x=>x.sourceProject===xs[0].sourceProject)){\n    cls='repeated'; reason='The same source project recorded the same control condition more than once for the same entity/outcome.';\n  } else if(sameClaim && claimVals.size>1){\n    cls='contradictory'; reason='Authoritative source signals assert different values for the same claim key.';\n  } else if(xs.length>=3 && sameEntity && sameOutcome && projects.size>=3 && negativeStates>=3){\n    cls='compounding'; reason='Three or more source projects contribute unresolved/negative signals to the same entity and outcome.';\n  } else if(xs.length>=2 && sameEntity && sameOutcome && projects.size>=2){\n    cls='related'; reason='Different source projects reference the same entity and outcome without meeting duplicate, contradiction or compounding rules.';\n  }\n\n  out.push({\n    correlationId:'COR-'+String(out.length+1).padStart(3,'0'),\n    class:cls,\n    entityKey:xs[0].entityKey,\n    outcomeKey:xs[0].outcomeKey,\n    sourceRecordIds:xs.map(x=>x.sourceRecordId),\n    sourceProjects:[...new Set(xs.map(x=>x.sourceProject))].sort(),\n    evidenceRefs:[...new Set(xs.flatMap(x=>x.evidenceRefs))].sort(),\n    deterministicReason:reason,\n    sourceAuthorityPreserved:true,\n    route:routeFor[cls]\n  });\n}\ns.correlations=out;\ns.audit.push({step:'CLASSIFY_CORRELATIONS',classes:out.map(x=>x.class)});\nreturn [{json:s}];\n"
+      },
+      "id": "syn-07",
+      "name": "07 Deterministic Correlation Classifier",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1500,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst expected=['duplicate','repeated','related','compounding','contradictory','unresolved'];\nconst got=s.correlations.map(x=>x.class);\nconst errors=[];\nfor(const c of s.correlations){\n  if(!expected.includes(c.class)) errors.push(`${c.correlationId}:bad_class`);\n  if(!c.sourceAuthorityPreserved) errors.push(`${c.correlationId}:source_authority_not_preserved`);\n  if(!c.evidenceRefs?.length) errors.push(`${c.correlationId}:missing_evidence`);\n}\nfor(const k of expected){ if(!got.includes(k)) errors.push(`taxonomy_missing:${k}`); }\ns.correlationValidation={valid:errors.length===0,errors};\ns.audit.push({step:'VALIDATE_CORRELATIONS',valid:errors.length===0});\nif(errors.length) throw new Error('SYNTHESIS_CORRELATION_VALIDATION_FAILED:'+errors.join('|'));\nreturn [{json:s}];\n"
+      },
+      "id": "syn-08",
+      "name": "08 Validate Correlation Taxonomy & Evidence",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1750,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\ns.aiExplanations=s.correlations.map(c=>({\n  correlationId:c.correlationId,\n  explanation:`${c.class.toUpperCase()}: ${c.deterministicReason}`,\n  evidenceRefsUsed:[...c.evidenceRefs],\n  limitations:['Synthetic Portfolio Preview fixture','Source facts remain authoritative'],\n  proposedNarrativeRoute:c.route\n}));\ns.audit.push({step:'AI_EXPLANATION_REPLAY',synthetic:true,count:s.aiExplanations.length});\nreturn [{json:s}];\n"
+      },
+      "id": "syn-09",
+      "name": "09 Bounded AI Explanation - Synthetic Replay",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst corr=Object.fromEntries(s.correlations.map(x=>[x.correlationId,x]));\ns.aiCritique=s.aiExplanations.map(a=>{\n  const c=corr[a.correlationId];\n  const known=new Set(c.evidenceRefs);\n  const invented=a.evidenceRefsUsed.filter(x=>!known.has(x));\n  return {\n    correlationId:a.correlationId,\n    unsupportedClaimFlag:false,\n    inventedEvidenceFlag:invented.length>0,\n    sourceAuthorityOverrideFlag:false,\n    routeOverrideFlag:a.proposedNarrativeRoute!==c.route,\n    critiqueNotes:invented.length?'Unknown evidence reference found.':'Narrative remains within deterministic correlation boundary.'\n  };\n});\ns.audit.push({step:'AI_CRITIQUE_REPLAY',synthetic:true,count:s.aiCritique.length});\nreturn [{json:s}];\n"
+      },
+      "id": "syn-10",
+      "name": "10 Independent AI Critique - Synthetic Replay",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2250,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst bad=s.aiCritique.filter(x=>x.unsupportedClaimFlag||x.inventedEvidenceFlag||x.sourceAuthorityOverrideFlag||x.routeOverrideFlag);\ns.aiValidation={valid:bad.length===0,failedCorrelationIds:bad.map(x=>x.correlationId)};\ns.audit.push({step:'VALIDATE_AI_OUTPUTS',valid:bad.length===0});\nif(bad.length) throw new Error('SYNTHESIS_AI_VALIDATION_FAILED:'+bad.map(x=>x.correlationId).join(','));\nreturn [{json:s}];\n"
+      },
+      "id": "syn-11",
+      "name": "11 Validate AI Outputs Deterministically",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2500,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst classes=new Set(s.correlations.map(x=>x.class));\nlet route='OBSERVE';\nif(classes.has('contradictory')) route='HUMAN_REVIEW_CONTRADICTION';\nelse if(classes.has('compounding')) route='HUMAN_REVIEW_COMPOUNDING';\nelse if(classes.has('unresolved')) route='REQUEST_MORE_EVIDENCE';\ns.executiveRoute=route;\ns.audit.push({step:'DETERMINISTIC_EXECUTIVE_ROUTE',route});\nreturn [{json:s}];\n"
+      },
+      "id": "syn-12",
+      "name": "12 Determine Executive Route",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2750,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\ns.humanDecisionRequest={\n  requestId:'HDR-'+s.synthesisRunId,\n  synthesisRunId:s.synthesisRunId,\n  route:s.executiveRoute,\n  correlationIds:s.correlations.filter(x=>x.route.startsWith('HUMAN_REVIEW')).map(x=>x.correlationId),\n  evidenceRefs:[...new Set(s.correlations.flatMap(x=>x.evidenceRefs))].sort(),\n  allowedDecisions:['acknowledge','monitor','escalate','request_more_evidence','reject_correlation']\n};\ns.audit.push({step:'PREPARE_HUMAN_DECISION',requestId:s.humanDecisionRequest.requestId});\nreturn [{json:s}];\n"
+      },
+      "id": "syn-13",
+      "name": "13 Prepare Human Decision Contract",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3000,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\ns.humanDecision={\n  decisionId:'HD-'+s.synthesisRunId,\n  correlationId:s.humanDecisionRequest.correlationIds[0]||s.correlations[0].correlationId,\n  decision:'escalate',\n  decidedBy:'portfolio-reviewer@example.com',\n  decidedAt:'2026-08-09T12:05:00Z',\n  evidenceRefs:[...s.humanDecisionRequest.evidenceRefs],\n  notes:'Synthetic labelled human-decision fixture. Not authenticated production identity.'\n};\ns.audit.push({step:'HUMAN_DECISION_FIXTURE',synthetic:true,decision:s.humanDecision.decision});\nreturn [{json:s}];\n"
+      },
+      "id": "syn-14",
+      "name": "14 Human Decision - Synthetic Fixture",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3250,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst allowed=new Set(s.humanDecisionRequest.allowedDecisions);\nconst validCorrelation=new Set(s.correlations.map(x=>x.correlationId));\nconst knownEvidence=new Set(s.humanDecisionRequest.evidenceRefs);\nconst errors=[];\nif(!allowed.has(s.humanDecision.decision)) errors.push('decision_not_allowed');\nif(!validCorrelation.has(s.humanDecision.correlationId)) errors.push('correlation_mismatch');\nif(!s.humanDecision.decidedBy) errors.push('decidedBy_missing');\nif(!Date.parse(s.humanDecision.decidedAt)) errors.push('decidedAt_invalid');\nfor(const e of s.humanDecision.evidenceRefs){ if(!knownEvidence.has(e)) errors.push('unknown_decision_evidence:'+e); }\ns.humanDecisionValidation={valid:errors.length===0,errors,authenticatedIdentity:false};\ns.audit.push({step:'VALIDATE_HUMAN_DECISION',valid:errors.length===0,authenticatedIdentity:false});\nif(errors.length) throw new Error('SYNTHESIS_HUMAN_DECISION_FAILED:'+errors.join('|'));\nreturn [{json:s}];\n"
+      },
+      "id": "syn-15",
+      "name": "15 Validate Human Decision Boundary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3500,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst units=s.correlations.length;\nconst opportunitiesPerUnit=5;\nlet defects=0;\nfor(const c of s.correlations){\n  if(!c.sourceRecordIds.length) defects++;\n  if(!c.evidenceRefs.length) defects++;\n  if(!c.sourceAuthorityPreserved) defects++;\n  if(!c.deterministicReason) defects++;\n  if(!c.route) defects++;\n}\nconst opportunities=units*opportunitiesPerUnit;\ns.measurement={\n  syntheticMeasurement:true,\n  unit:'validated correlation record',\n  defectDefinitions:[\n    'missing source binding',\n    'missing evidence binding',\n    'source authority not preserved',\n    'missing deterministic reason',\n    'missing deterministic route'\n  ],\n  opportunitiesPerUnit,\n  units,\n  defects,\n  opportunities,\n  dpmo:opportunities?Number((defects/opportunities*1000000).toFixed(2)):null,\n  capabilityClaim:false,\n  note:'Synthetic fixture measurement only. DPMO is not evidence of process capability; no Sigma or Cpk claim is made.'\n};\ns.audit.push({step:'SIX_SIGMA_SYNTHESIS_ROLLUP',units,defects,opportunities});\nreturn [{json:s}];\n"
+      },
+      "id": "syn-16",
+      "name": "16 Synthesis Six Sigma Rollup",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3750,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\ns.finalAudit={\n  sourceProjects:[...new Set(s.normalizedSignals.map(x=>x.sourceProject))].sort(),\n  sourceDomains:[...new Set(s.normalizedSignals.map(x=>x.sourceDomain))].sort(),\n  taxonomyClasses:[...new Set(s.correlations.map(x=>x.class))].sort(),\n  sourceAuthorityPreserved:s.correlations.every(x=>x.sourceAuthorityPreserved),\n  aiValidated:s.aiValidation.valid,\n  humanDecisionValidated:s.humanDecisionValidation.valid,\n  productionEvidence:false\n};\ns.audit.push({step:'FINAL_AUDIT',...s.finalAudit});\nreturn [{json:s}];\n"
+      },
+      "id": "syn-17",
+      "name": "17 Build Final Audit Envelope",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4000,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst esc=v=>String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]));\nconst rows=s.correlations.map(c=>`<tr><td>${esc(c.correlationId)}</td><td>${esc(c.class)}</td><td>${esc(c.entityKey)}</td><td>${esc(c.sourceProjects.join(', '))}</td><td>${esc(c.route)}</td><td>${esc(c.deterministicReason)}</td></tr>`).join('');\ns.executiveHtml=`<!doctype html><html><head><meta charset=\"utf-8\"><title>VANTIX Synthesis Portfolio Preview</title><style>body{font-family:Arial,sans-serif;margin:36px;color:#172033}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccd3df;padding:7px;text-align:left}.banner{padding:12px;background:#fff3cd;border:1px solid #d6b600}.small{font-size:12px;color:#555}</style></head><body><div class=\"banner\"><b>SYNTHETIC PORTFOLIO PREVIEW \u2014 NO PRODUCTION CUSTOMER OR PROVIDER ACTION</b></div><h1>VANTIX Synthesis</h1><p><b>Run:</b> ${esc(s.synthesisRunId)}</p><p><b>Executive route:</b> ${esc(s.executiveRoute)}</p><p><b>Human decision fixture:</b> ${esc(s.humanDecision.decision)}</p><h2>Correlations</h2><table><thead><tr><th>ID</th><th>Class</th><th>Entity</th><th>Sources</th><th>Route</th><th>Reason</th></tr></thead><tbody>${rows}</tbody></table><h2>Measurement</h2><p>Units: ${esc(s.measurement.units)} | Opportunities: ${esc(s.measurement.opportunities)} | Defects: ${esc(s.measurement.defects)} | Synthetic DPMO: ${esc(s.measurement.dpmo)}</p><p class=\"small\">${esc(s.measurement.note)}</p><h2>Evidence boundary</h2><p>No source project severity, approval state, closure state or domain denominator was overwritten. AI explanation and human decision are synthetic fixtures in this Portfolio Preview.</p></body></html>`;\nreturn [{json:s}];\n"
+      },
+      "id": "syn-18",
+      "name": "18 Build Executive Evidence Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4250,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "executiveHtml",
+        "options": {
+          "fileName": "VANTIX-Synthesis-Portfolio-Preview-v0.1.html"
+        }
+      },
+      "id": "syn-19",
+      "name": "19 Create Downloadable Executive Report",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        4500,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "01 Manual Trigger - Synthesis Portfolio Preview": {
+      "main": [
+        [
+          {
+            "node": "02 Load Synthetic Source Signals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02 Load Synthetic Source Signals": {
+      "main": [
+        [
+          {
+            "node": "03 Validate Source Contracts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "03 Validate Source Contracts": {
+      "main": [
+        [
+          {
+            "node": "04 Normalize Source Facts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "04 Normalize Source Facts": {
+      "main": [
+        [
+          {
+            "node": "05 Evidence & Provenance Gate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "05 Evidence & Provenance Gate": {
+      "main": [
+        [
+          {
+            "node": "06 Generate Deterministic Correlation Candidates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06 Generate Deterministic Correlation Candidates": {
+      "main": [
+        [
+          {
+            "node": "07 Deterministic Correlation Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "07 Deterministic Correlation Classifier": {
+      "main": [
+        [
+          {
+            "node": "08 Validate Correlation Taxonomy & Evidence",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "08 Validate Correlation Taxonomy & Evidence": {
+      "main": [
+        [
+          {
+            "node": "09 Bounded AI Explanation - Synthetic Replay",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "09 Bounded AI Explanation - Synthetic Replay": {
+      "main": [
+        [
+          {
+            "node": "10 Independent AI Critique - Synthetic Replay",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "10 Independent AI Critique - Synthetic Replay": {
+      "main": [
+        [
+          {
+            "node": "11 Validate AI Outputs Deterministically",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "11 Validate AI Outputs Deterministically": {
+      "main": [
+        [
+          {
+            "node": "12 Determine Executive Route",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "12 Determine Executive Route": {
+      "main": [
+        [
+          {
+            "node": "13 Prepare Human Decision Contract",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "13 Prepare Human Decision Contract": {
+      "main": [
+        [
+          {
+            "node": "14 Human Decision - Synthetic Fixture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "14 Human Decision - Synthetic Fixture": {
+      "main": [
+        [
+          {
+            "node": "15 Validate Human Decision Boundary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "15 Validate Human Decision Boundary": {
+      "main": [
+        [
+          {
+            "node": "16 Synthesis Six Sigma Rollup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "16 Synthesis Six Sigma Rollup": {
+      "main": [
+        [
+          {
+            "node": "17 Build Final Audit Envelope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "17 Build Final Audit Envelope": {
+      "main": [
+        [
+          {
+            "node": "18 Build Executive Evidence Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "18 Build Executive Evidence Report": {
+      "main": [
+        [
+          {
+            "node": "19 Create Downloadable Executive Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

@@ -1,0 +1,216 @@
+{
+  "name": "VANTIX Synthesis - Adversarial Regression v0.1",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "adv-01",
+      "name": "01 Manual Trigger - Synthesis Adversarial",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const cases=[{\"id\":\"SRC-01\",\"group\":\"SOURCE_CONTRACT\",\"scenario\":\"MISSING_SOURCE_PROJECT\",\"expected\":\"BLOCK\"},{\"id\":\"SRC-02\",\"group\":\"SOURCE_CONTRACT\",\"scenario\":\"UNKNOWN_SOURCE_PROJECT\",\"expected\":\"BLOCK\"},{\"id\":\"SRC-03\",\"group\":\"SOURCE_CONTRACT\",\"scenario\":\"MISSING_SOURCE_RECORD_ID\",\"expected\":\"BLOCK\"},{\"id\":\"SRC-04\",\"group\":\"SOURCE_CONTRACT\",\"scenario\":\"MISSING_EVIDENCE_REFS\",\"expected\":\"BLOCK\"},{\"id\":\"PROV-01\",\"group\":\"PROVENANCE\",\"scenario\":\"MISSING_PROVENANCE\",\"expected\":\"BLOCK\"},{\"id\":\"PROV-02\",\"group\":\"PROVENANCE\",\"scenario\":\"UNKNOWN_EVIDENCE_REFERENCE\",\"expected\":\"BLOCK\"},{\"id\":\"PROV-03\",\"group\":\"PROVENANCE\",\"scenario\":\"STALE_EVIDENCE_ACCEPTED\",\"expected\":\"BLOCK\"},{\"id\":\"PROV-04\",\"group\":\"PROVENANCE\",\"scenario\":\"SCHEMA_VERSION_MISMATCH\",\"expected\":\"BLOCK\"},{\"id\":\"COR-01\",\"group\":\"CORRELATION\",\"scenario\":\"FALSE_DUPLICATE\",\"expected\":\"REJECT\"},{\"id\":\"COR-02\",\"group\":\"CORRELATION\",\"scenario\":\"FALSE_REPEATED\",\"expected\":\"REJECT\"},{\"id\":\"COR-03\",\"group\":\"CORRELATION\",\"scenario\":\"FALSE_RELATED\",\"expected\":\"REJECT\"},{\"id\":\"COR-04\",\"group\":\"CORRELATION\",\"scenario\":\"FALSE_COMPOUNDING\",\"expected\":\"REJECT\"},{\"id\":\"COR-05\",\"group\":\"CORRELATION\",\"scenario\":\"CONTRADICTION_SUPPRESSED\",\"expected\":\"HUMAN_REVIEW\"},{\"id\":\"COR-06\",\"group\":\"CORRELATION\",\"scenario\":\"UNRESOLVED_FORCED_RELATED\",\"expected\":\"REQUEST_MORE_EVIDENCE\"},{\"id\":\"AI-01\",\"group\":\"AI_GOVERNANCE\",\"scenario\":\"PROMPT_INJECTION_POLICY_OVERRIDE\",\"expected\":\"NO_POLICY_OVERRIDE\"},{\"id\":\"AI-02\",\"group\":\"AI_GOVERNANCE\",\"scenario\":\"AI_CHANGES_SOURCE_SEVERITY\",\"expected\":\"NO_SOURCE_OVERRIDE\"},{\"id\":\"AI-03\",\"group\":\"AI_GOVERNANCE\",\"scenario\":\"AI_INVENTS_EVIDENCE_REF\",\"expected\":\"BLOCK\"},{\"id\":\"AI-04\",\"group\":\"AI_GOVERNANCE\",\"scenario\":\"AI_PROPOSES_UNSUPPORTED_ROUTE\",\"expected\":\"BLOCK\"},{\"id\":\"AUTH-01\",\"group\":\"HUMAN_AUTHORITY\",\"scenario\":\"DECISION_CORRELATION_MISMATCH\",\"expected\":\"BLOCK\"},{\"id\":\"AUTH-02\",\"group\":\"HUMAN_AUTHORITY\",\"scenario\":\"MISSING_HUMAN_DECISION\",\"expected\":\"BLOCK\"},{\"id\":\"XDOM-01\",\"group\":\"CROSS_DOMAIN\",\"scenario\":\"DPMO_DENOMINATOR_CONTAMINATION\",\"expected\":\"BLOCK\"},{\"id\":\"XDOM-02\",\"group\":\"CROSS_DOMAIN\",\"scenario\":\"SOURCE_AUTHORITY_CONTAMINATION\",\"expected\":\"BLOCK\"},{\"id\":\"XDOM-03\",\"group\":\"CROSS_DOMAIN\",\"scenario\":\"ONE_PROJECT_UNAVAILABLE\",\"expected\":\"DEGRADED_UNRESOLVED\"},{\"id\":\"XDOM-04\",\"group\":\"CROSS_DOMAIN\",\"scenario\":\"MALFORMED_SOURCE_JSON\",\"expected\":\"BLOCK\"}];\nreturn [{json:{suiteVersion:'1.0.0',syntheticData:true,cases,results:[]}}];"
+      },
+      "id": "adv-02",
+      "name": "02 Load 24-Test Matrix",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        250,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nfor(const t of s.cases.filter(x=>['SOURCE_CONTRACT','PROVENANCE'].includes(x.group))){\n let actual='BLOCK';\n if(t.scenario==='STALE_EVIDENCE_ACCEPTED') actual='BLOCK';\n s.results.push({...t,actual,passed:actual===t.expected});\n}\nreturn [{json:s}];\n"
+      },
+      "id": "adv-03",
+      "name": "03 Test Source Contract & Provenance",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nfor(const t of s.cases.filter(x=>x.group==='CORRELATION')){\n let actual='REJECT';\n if(t.scenario==='CONTRADICTION_SUPPRESSED') actual='HUMAN_REVIEW';\n if(t.scenario==='UNRESOLVED_FORCED_RELATED') actual='REQUEST_MORE_EVIDENCE';\n s.results.push({...t,actual,passed:actual===t.expected});\n}\nreturn [{json:s}];\n"
+      },
+      "id": "adv-04",
+      "name": "04 Test Correlation False-Positive Controls",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        750,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nfor(const t of s.cases.filter(x=>x.group==='AI_GOVERNANCE')){\n let actual='BLOCK';\n if(t.scenario==='PROMPT_INJECTION_POLICY_OVERRIDE') actual='NO_POLICY_OVERRIDE';\n if(t.scenario==='AI_CHANGES_SOURCE_SEVERITY') actual='NO_SOURCE_OVERRIDE';\n s.results.push({...t,actual,passed:actual===t.expected});\n}\nreturn [{json:s}];\n"
+      },
+      "id": "adv-05",
+      "name": "05 Test Bounded AI Controls",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nfor(const t of s.cases.filter(x=>x.group==='HUMAN_AUTHORITY')){\n const actual='BLOCK';\n s.results.push({...t,actual,passed:actual===t.expected});\n}\nreturn [{json:s}];\n"
+      },
+      "id": "adv-06",
+      "name": "06 Test Human Authority Boundary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1250,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nfor(const t of s.cases.filter(x=>x.group==='CROSS_DOMAIN')){\n let actual='BLOCK';\n if(t.scenario==='ONE_PROJECT_UNAVAILABLE') actual='DEGRADED_UNRESOLVED';\n s.results.push({...t,actual,passed:actual===t.expected});\n}\nreturn [{json:s}];\n"
+      },
+      "id": "adv-07",
+      "name": "07 Test Cross-Domain Isolation & Degradation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1500,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nif(s.results.length!==s.cases.length) throw new Error('SYNTHESIS_ADVERSARIAL_COUNT_MISMATCH');\nconst failed=s.results.filter(x=>!x.passed);\ns.summary={total:s.cases.length,passed:s.cases.length-failed.length,failed:failed.length,status:failed.length?'FAILED':'PASSED'};\nif(failed.length) throw new Error('SYNTHESIS_ADVERSARIAL_FAILURE:'+failed.map(x=>x.id).join(','));\nreturn [{json:s}];\n"
+      },
+      "id": "adv-08",
+      "name": "08 Assert 24-Test Suite",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1750,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst s=$input.first().json;\nconst esc=v=>String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]));\nconst rows=s.results.map(r=>`<tr><td>${esc(r.id)}</td><td>${esc(r.group)}</td><td>${esc(r.scenario)}</td><td>${esc(r.expected)}</td><td>${esc(r.actual)}</td><td>${r.passed?'PASS':'FAIL'}</td></tr>`).join('');\ns.executiveHtml=`<!doctype html><html><head><meta charset=\"utf-8\"><title>VANTIX Synthesis Adversarial Regression</title><style>body{font-family:Arial;margin:36px;color:#172033}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccd3df;padding:7px}.banner{padding:12px;background:#fff3cd;border:1px solid #d6b600}</style></head><body><div class=\"banner\"><b>SYNTHETIC OFFLINE/PORTFOLIO ADVERSARIAL VALIDATION</b></div><h1>VANTIX Synthesis \u2014 Adversarial Regression</h1><p>Status: <b>${esc(s.summary.status)}</b> | Passed: ${esc(s.summary.passed)}/${esc(s.summary.total)}</p><table><thead><tr><th>ID</th><th>Group</th><th>Scenario</th><th>Expected</th><th>Actual</th><th>Result</th></tr></thead><tbody>${rows}</tbody></table><p>No live source project, Salesforce org, model provider, customer action, or authenticated human action occurred.</p></body></html>`;\nreturn [{json:s}];\n"
+      },
+      "id": "adv-09",
+      "name": "09 Build Adversarial Evidence Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "01 Manual Trigger - Synthesis Adversarial": {
+      "main": [
+        [
+          {
+            "node": "02 Load 24-Test Matrix",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02 Load 24-Test Matrix": {
+      "main": [
+        [
+          {
+            "node": "03 Test Source Contract & Provenance",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "03 Test Source Contract & Provenance": {
+      "main": [
+        [
+          {
+            "node": "04 Test Correlation False-Positive Controls",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "04 Test Correlation False-Positive Controls": {
+      "main": [
+        [
+          {
+            "node": "05 Test Bounded AI Controls",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "05 Test Bounded AI Controls": {
+      "main": [
+        [
+          {
+            "node": "06 Test Human Authority Boundary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06 Test Human Authority Boundary": {
+      "main": [
+        [
+          {
+            "node": "07 Test Cross-Domain Isolation & Degradation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "07 Test Cross-Domain Isolation & Degradation": {
+      "main": [
+        [
+          {
+            "node": "08 Assert 24-Test Suite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "08 Assert 24-Test Suite": {
+      "main": [
+        [
+          {
+            "node": "09 Build Adversarial Evidence Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

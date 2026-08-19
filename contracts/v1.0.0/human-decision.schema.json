@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viridianai.in/vantix/synthesis/contracts/v1.0.0/human-decision.schema.json",
+  "title": "VANTIX Synthesis Human Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decisionId",
+    "correlationId",
+    "decision",
+    "decidedBy",
+    "decidedAt",
+    "evidenceRefs"
+  ],
+  "properties": {
+    "decisionId": {
+      "type": "string"
+    },
+    "correlationId": {
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "acknowledge",
+        "monitor",
+        "escalate",
+        "request_more_evidence",
+        "reject_correlation"
+      ]
+    },
+    "decidedBy": {
+      "type": "string"
+    },
+    "decidedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

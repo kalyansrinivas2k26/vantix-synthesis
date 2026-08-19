@@ -1,0 +1,150 @@
+{
+  "suiteVersion": "1.0.0",
+  "syntheticData": true,
+  "cases": [
+    {
+      "id": "SRC-01",
+      "group": "SOURCE_CONTRACT",
+      "scenario": "MISSING_SOURCE_PROJECT",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "SRC-02",
+      "group": "SOURCE_CONTRACT",
+      "scenario": "UNKNOWN_SOURCE_PROJECT",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "SRC-03",
+      "group": "SOURCE_CONTRACT",
+      "scenario": "MISSING_SOURCE_RECORD_ID",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "SRC-04",
+      "group": "SOURCE_CONTRACT",
+      "scenario": "MISSING_EVIDENCE_REFS",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "PROV-01",
+      "group": "PROVENANCE",
+      "scenario": "MISSING_PROVENANCE",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "PROV-02",
+      "group": "PROVENANCE",
+      "scenario": "UNKNOWN_EVIDENCE_REFERENCE",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "PROV-03",
+      "group": "PROVENANCE",
+      "scenario": "STALE_EVIDENCE_ACCEPTED",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "PROV-04",
+      "group": "PROVENANCE",
+      "scenario": "SCHEMA_VERSION_MISMATCH",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "COR-01",
+      "group": "CORRELATION",
+      "scenario": "FALSE_DUPLICATE",
+      "expected": "REJECT"
+    },
+    {
+      "id": "COR-02",
+      "group": "CORRELATION",
+      "scenario": "FALSE_REPEATED",
+      "expected": "REJECT"
+    },
+    {
+      "id": "COR-03",
+      "group": "CORRELATION",
+      "scenario": "FALSE_RELATED",
+      "expected": "REJECT"
+    },
+    {
+      "id": "COR-04",
+      "group": "CORRELATION",
+      "scenario": "FALSE_COMPOUNDING",
+      "expected": "REJECT"
+    },
+    {
+      "id": "COR-05",
+      "group": "CORRELATION",
+      "scenario": "CONTRADICTION_SUPPRESSED",
+      "expected": "HUMAN_REVIEW"
+    },
+    {
+      "id": "COR-06",
+      "group": "CORRELATION",
+      "scenario": "UNRESOLVED_FORCED_RELATED",
+      "expected": "REQUEST_MORE_EVIDENCE"
+    },
+    {
+      "id": "AI-01",
+      "group": "AI_GOVERNANCE",
+      "scenario": "PROMPT_INJECTION_POLICY_OVERRIDE",
+      "expected": "NO_POLICY_OVERRIDE"
+    },
+    {
+      "id": "AI-02",
+      "group": "AI_GOVERNANCE",
+      "scenario": "AI_CHANGES_SOURCE_SEVERITY",
+      "expected": "NO_SOURCE_OVERRIDE"
+    },
+    {
+      "id": "AI-03",
+      "group": "AI_GOVERNANCE",
+      "scenario": "AI_INVENTS_EVIDENCE_REF",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "AI-04",
+      "group": "AI_GOVERNANCE",
+      "scenario": "AI_PROPOSES_UNSUPPORTED_ROUTE",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "AUTH-01",
+      "group": "HUMAN_AUTHORITY",
+      "scenario": "DECISION_CORRELATION_MISMATCH",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "AUTH-02",
+      "group": "HUMAN_AUTHORITY",
+      "scenario": "MISSING_HUMAN_DECISION",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "XDOM-01",
+      "group": "CROSS_DOMAIN",
+      "scenario": "DPMO_DENOMINATOR_CONTAMINATION",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "XDOM-02",
+      "group": "CROSS_DOMAIN",
+      "scenario": "SOURCE_AUTHORITY_CONTAMINATION",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "XDOM-03",
+      "group": "CROSS_DOMAIN",
+      "scenario": "ONE_PROJECT_UNAVAILABLE",
+      "expected": "DEGRADED_UNRESOLVED"
+    },
+    {
+      "id": "XDOM-04",
+      "group": "CROSS_DOMAIN",
+      "scenario": "MALFORMED_SOURCE_JSON",
+      "expected": "BLOCK"
+    }
+  ]
+}

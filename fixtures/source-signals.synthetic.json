@@ -1,0 +1,248 @@
+{
+  "fixtureVersion": "1.0.0",
+  "syntheticData": true,
+  "signals": [
+    {
+      "sourceProject": "P1_FLOW_INTEGRITY",
+      "sourceDomain": "FLOW_INTEGRITY",
+      "sourceRecordId": "P1-FI-001",
+      "sourceRunId": "SYN-P1-001",
+      "sourceSchemaVersion": "1.0.0",
+      "observedAt": "2026-08-09T08:00:00Z",
+      "entityKey": "ACCOUNT-ALPHA",
+      "outcomeKey": "ONBOARDING_VALUE",
+      "controlKey": "CRM_GOVERNANCE_DESCRIPTION",
+      "claimKey": null,
+      "claimValue": null,
+      "status": "OPEN_GOVERNANCE_FINDING",
+      "severity": "low",
+      "evidenceRefs": [
+        "EVD-P1-001"
+      ],
+      "evidenceFingerprint": "fp-governance-001",
+      "provenance": {
+        "repository": "P1_FLOW_INTEGRITY",
+        "artifactPath": "synthetic/P1-FI-001",
+        "evidenceClass": "SYNTHETIC_FIXTURE"
+      },
+      "authoritativeFields": [
+        "status",
+        "severity"
+      ],
+      "metadata": {
+        "description": "Synthetic governance signal used only for Synthesis testing."
+      }
+    },
+    {
+      "sourceProject": "P1_FLOW_INTEGRITY",
+      "sourceDomain": "FLOW_INTEGRITY",
+      "sourceRecordId": "P1-FI-001-DUP",
+      "sourceRunId": "SYN-P1-002",
+      "sourceSchemaVersion": "1.0.0",
+      "observedAt": "2026-08-09T08:01:00Z",
+      "entityKey": "ACCOUNT-ALPHA",
+      "outcomeKey": "ONBOARDING_VALUE",
+      "controlKey": "CRM_GOVERNANCE_DESCRIPTION",
+      "claimKey": null,
+      "claimValue": null,
+      "status": "OPEN_GOVERNANCE_FINDING",
+      "severity": "low",
+      "evidenceRefs": [
+        "EVD-P1-001"
+      ],
+      "evidenceFingerprint": "fp-governance-001",
+      "provenance": {
+        "repository": "P1_FLOW_INTEGRITY",
+        "artifactPath": "synthetic/P1-FI-001-DUP",
+        "evidenceClass": "SYNTHETIC_FIXTURE"
+      },
+      "authoritativeFields": [
+        "status",
+        "severity"
+      ],
+      "metadata": {
+        "description": "Synthetic duplicate for taxonomy validation."
+      }
+    },
+    {
+      "sourceProject": "P2_AGILE_DELIVERY",
+      "sourceDomain": "AGILE_DELIVERY",
+      "sourceRecordId": "P2-AD-101",
+      "sourceRunId": "SYN-P2-101",
+      "sourceSchemaVersion": "1.0.0",
+      "observedAt": "2026-08-09T08:10:00Z",
+      "entityKey": "ACCOUNT-ALPHA",
+      "outcomeKey": "ONBOARDING_VALUE",
+      "controlKey": "DELIVERY_READINESS",
+      "claimKey": null,
+      "claimValue": null,
+      "status": "BLOCKED_EVIDENCE_GAP",
+      "severity": "high",
+      "evidenceRefs": [
+        "EVD-P2-101"
+      ],
+      "evidenceFingerprint": "fp-delivery-101",
+      "provenance": {
+        "repository": "P2_AGILE_DELIVERY",
+        "artifactPath": "synthetic/P2-AD-101",
+        "evidenceClass": "SYNTHETIC_FIXTURE"
+      },
+      "authoritativeFields": [
+        "status",
+        "severity"
+      ],
+      "metadata": {
+        "iteration": 1
+      }
+    },
+    {
+      "sourceProject": "P2_AGILE_DELIVERY",
+      "sourceDomain": "AGILE_DELIVERY",
+      "sourceRecordId": "P2-AD-102",
+      "sourceRunId": "SYN-P2-102",
+      "sourceSchemaVersion": "1.0.0",
+      "observedAt": "2026-08-09T10:10:00Z",
+      "entityKey": "ACCOUNT-ALPHA",
+      "outcomeKey": "ONBOARDING_VALUE",
+      "controlKey": "DELIVERY_READINESS",
+      "claimKey": null,
+      "claimValue": null,
+      "status": "BLOCKED_EVIDENCE_GAP",
+      "severity": "high",
+      "evidenceRefs": [
+        "EVD-P2-102"
+      ],
+      "evidenceFingerprint": "fp-delivery-102",
+      "provenance": {
+        "repository": "P2_AGILE_DELIVERY",
+        "artifactPath": "synthetic/P2-AD-102",
+        "evidenceClass": "SYNTHETIC_FIXTURE"
+      },
+      "authoritativeFields": [
+        "status",
+        "severity"
+      ],
+      "metadata": {
+        "iteration": 2
+      }
+    },
+    {
+      "sourceProject": "P3_CONTROL_VALUE",
+      "sourceDomain": "CONTROL_VALUE",
+      "sourceRecordId": "P3-CV-201",
+      "sourceRunId": "SYN-P3-201",
+      "sourceSchemaVersion": "1.0.0",
+      "observedAt": "2026-08-09T08:20:00Z",
+      "entityKey": "ACCOUNT-ALPHA",
+      "outcomeKey": "ONBOARDING_VALUE",
+      "controlKey": "COMMITMENT_CLOSURE",
+      "claimKey": "ONBOARDING_OUTCOME_VERIFIED",
+      "claimValue": false,
+      "status": "OUTCOME_NOT_VERIFIED",
+      "severity": "high",
+      "evidenceRefs": [
+        "EVD-P3-201"
+      ],
+      "evidenceFingerprint": "fp-control-value-201",
+      "provenance": {
+        "repository": "P3_CONTROL_VALUE",
+        "artifactPath": "synthetic/P3-CV-201",
+        "evidenceClass": "SYNTHETIC_FIXTURE"
+      },
+      "authoritativeFields": [
+        "status",
+        "severity",
+        "claimValue"
+      ],
+      "metadata": {}
+    },
+    {
+      "sourceProject": "P4_ATTESTOR",
+      "sourceDomain": "ATTESTOR_COMMITMENT_ASSURANCE",
+      "sourceRecordId": "P4-CA-301",
+      "sourceRunId": "SYN-P4-301",
+      "sourceSchemaVersion": "1.0.0",
+      "observedAt": "2026-08-09T08:22:00Z",
+      "entityKey": "ACCOUNT-ALPHA",
+      "outcomeKey": "ONBOARDING_VALUE",
+      "controlKey": "ATTESTOR_COMMITMENT",
+      "claimKey": "ONBOARDING_OUTCOME_VERIFIED",
+      "claimValue": true,
+      "status": "OUTCOME_CLAIM_VERIFIED",
+      "severity": "medium",
+      "evidenceRefs": [
+        "EVD-P4-CA-301"
+      ],
+      "evidenceFingerprint": "fp-attestor-ca-301",
+      "provenance": {
+        "repository": "P4_ATTESTOR",
+        "artifactPath": "synthetic/P4-CA-301",
+        "evidenceClass": "SYNTHETIC_FIXTURE"
+      },
+      "authoritativeFields": [
+        "status",
+        "severity",
+        "claimValue"
+      ],
+      "metadata": {}
+    },
+    {
+      "sourceProject": "P4_ATTESTOR",
+      "sourceDomain": "ATTESTOR_CUSTOMER_MOMENTUM",
+      "sourceRecordId": "P4-CM-302",
+      "sourceRunId": "SYN-P4-302",
+      "sourceSchemaVersion": "1.0.0",
+      "observedAt": "2026-08-09T08:30:00Z",
+      "entityKey": "ACCOUNT-ALPHA",
+      "outcomeKey": "ONBOARDING_VALUE",
+      "controlKey": "CUSTOMER_MOMENTUM",
+      "claimKey": null,
+      "claimValue": null,
+      "status": "DETERIORATING",
+      "severity": "high",
+      "evidenceRefs": [
+        "EVD-P4-CM-302"
+      ],
+      "evidenceFingerprint": "fp-attestor-cm-302",
+      "provenance": {
+        "repository": "P4_ATTESTOR",
+        "artifactPath": "synthetic/P4-CM-302",
+        "evidenceClass": "SYNTHETIC_FIXTURE"
+      },
+      "authoritativeFields": [
+        "status",
+        "severity"
+      ],
+      "metadata": {}
+    },
+    {
+      "sourceProject": "P4_ATTESTOR",
+      "sourceDomain": "ATTESTOR_SERVICE_RECOVERY",
+      "sourceRecordId": "P4-SR-401",
+      "sourceRunId": "SYN-P4-401",
+      "sourceSchemaVersion": "1.0.0",
+      "observedAt": "2026-08-09T09:00:00Z",
+      "entityKey": "ACCOUNT-BETA",
+      "outcomeKey": "SERVICE_STABILITY",
+      "controlKey": "RECOVERY_STATE",
+      "claimKey": null,
+      "claimValue": null,
+      "status": "MONITOR_RECOVERY",
+      "severity": "medium",
+      "evidenceRefs": [
+        "EVD-P4-SR-401"
+      ],
+      "evidenceFingerprint": "fp-attestor-sr-401",
+      "provenance": {
+        "repository": "P4_ATTESTOR",
+        "artifactPath": "synthetic/P4-SR-401",
+        "evidenceClass": "SYNTHETIC_FIXTURE"
+      },
+      "authoritativeFields": [
+        "status",
+        "severity"
+      ],
+      "metadata": {}
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viridianai.in/vantix/synthesis/contracts/v1.0.0/correlation-record.schema.json",
+  "title": "VANTIX Synthesis Correlation Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "correlationId",
+    "class",
+    "entityKey",
+    "outcomeKey",
+    "sourceRecordIds",
+    "sourceProjects",
+    "evidenceRefs",
+    "deterministicReason",
+    "sourceAuthorityPreserved",
+    "route"
+  ],
+  "properties": {
+    "correlationId": {
+      "type": "string"
+    },
+    "class": {
+      "enum": [
+        "duplicate",
+        "repeated",
+        "related",
+        "compounding",
+        "contradictory",
+        "unresolved"
+      ]
+    },
+    "entityKey": {
+      "type": "string"
+    },
+    "outcomeKey": {
+      "type": "string"
+    },
+    "sourceRecordIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourceProjects": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "deterministicReason": {
+      "type": "string"
+    },
+    "sourceAuthorityPreserved": {
+      "const": true
+    },
+    "route": {
+      "enum": [
+        "NO_ACTION_DUPLICATE",
+        "OBSERVE_REPEATED",
+        "OBSERVE_RELATED",
+        "HUMAN_REVIEW_COMPOUNDING",
+        "HUMAN_REVIEW_CONTRADICTION",
+        "REQUEST_MORE_EVIDENCE"
+      ]
+    }
+  }
+}

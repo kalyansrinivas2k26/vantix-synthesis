@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viridianai.in/vantix/synthesis/contracts/v1.0.0/source-signal.schema.json",
+  "title": "VANTIX Synthesis Source Signal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sourceProject",
+    "sourceDomain",
+    "sourceRecordId",
+    "sourceSchemaVersion",
+    "observedAt",
+    "entityKey",
+    "outcomeKey",
+    "status",
+    "severity",
+    "evidenceRefs",
+    "provenance",
+    "authoritativeFields"
+  ],
+  "properties": {
+    "sourceProject": {
+      "enum": [
+        "P1_FLOW_INTEGRITY",
+        "P2_AGILE_DELIVERY",
+        "P3_CONTROL_VALUE",
+        "P4_ATTESTOR"
+      ]
+    },
+    "sourceDomain": {
+      "enum": [
+        "FLOW_INTEGRITY",
+        "AGILE_DELIVERY",
+        "CONTROL_VALUE",
+        "ATTESTOR_COMMITMENT_ASSURANCE",
+        "ATTESTOR_SERVICE_RECOVERY",
+        "ATTESTOR_CUSTOMER_MOMENTUM"
+      ]
+    },
+    "sourceRecordId": {
+      "type": "string",
+      "minLength": 3
+    },
+    "sourceRunId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceSchemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entityKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outcomeKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "controlKey": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "claimKey": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "claimValue": {},
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "severity": {
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low",
+        "informational",
+        "unknown"
+      ]
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "evidenceFingerprint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "artifactPath",
+        "evidenceClass"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string"
+        },
+        "artifactPath": {
+          "type": "string"
+        },
+        "evidenceClass": {
+          "enum": [
+            "SYNTHETIC_FIXTURE",
+            "OWNER_RUN_SYNTHETIC_N8N",
+            "OFFLINE_EXACT_NODE_CODE_EXECUTION",
+            "STORED_VALIDATION_REPORT",
+            "DESIGN_ONLY",
+            "PUBLIC_REPOSITORY_ARTIFACT"
+          ]
+        }
+      }
+    },
+    "authoritativeFields": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

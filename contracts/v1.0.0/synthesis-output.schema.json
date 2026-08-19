@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://viridianai.in/vantix/synthesis/contracts/v1.0.0/synthesis-output.schema.json",
+  "title": "VANTIX Synthesis Output",
+  "type": "object",
+  "required": [
+    "synthesisRunId",
+    "sourceManifestVersion",
+    "correlations",
+    "executiveRoute",
+    "humanDecision",
+    "audit",
+    "measurement"
+  ],
+  "properties": {
+    "synthesisRunId": {
+      "type": "string"
+    },
+    "sourceManifestVersion": {
+      "type": "string"
+    },
+    "correlations": {
+      "type": "array",
+      "items": {
+        "$ref": "correlation-record.schema.json"
+      }
+    },
+    "executiveRoute": {
+      "type": "string"
+    },
+    "humanDecision": {
+      "type": "object"
+    },
+    "audit": {
+      "type": "object"
+    },
+    "measurement": {
+      "type": "object"
+    }
+  }
+}

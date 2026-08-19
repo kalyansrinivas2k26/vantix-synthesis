@@ -1,0 +1,55 @@
+{
+  "manifestVersion": "1.0.0",
+  "status": "PORTFOLIO_PREVIEW",
+  "finalCommitBinding": "FROZEN_SOURCE_COMMITS",
+  "sources": [
+    {
+      "project": "P1_FLOW_INTEGRITY",
+      "repository": "https://github.com/kalyansrinivas2k26/viridian-agentic-process-excellence-suite",
+      "decisionAuthority": [
+        "governance facts",
+        "deterministic defect measurement",
+        "severity routing"
+      ],
+      "synthesisUse": "governance/control signal only",
+      "finalCommitSha": "dd75ea5"
+    },
+    {
+      "project": "P2_AGILE_DELIVERY",
+      "repository": "https://github.com/kalyansrinivas2k26/vantix-agile-delivery-admin-workload-sentinel",
+      "decisionAuthority": [
+        "intake validity",
+        "duplicate/readiness",
+        "priority/risk/workload",
+        "approval state"
+      ],
+      "synthesisUse": "delivery friction / delivery-governance signal only",
+      "finalCommitSha": "a4137f8"
+    },
+    {
+      "project": "P3_CONTROL_VALUE",
+      "repository": "https://github.com/kalyansrinivas2k26/vantix-control-value",
+      "decisionAuthority": [
+        "commitment evidence",
+        "permitted action policy",
+        "technical/customer outcome verification",
+        "closure state"
+      ],
+      "synthesisUse": "commitment/outcome signal only",
+      "finalCommitSha": "6e605dd"
+    },
+    {
+      "project": "P4_ATTESTOR",
+      "repository": "https://github.com/kalyansrinivas2k26/vantix-attestor",
+      "decisionAuthority": [
+        "commitment assurance",
+        "service recovery",
+        "customer momentum",
+        "module-specific evidence and deterministic routes"
+      ],
+      "synthesisUse": "customer-outcome assurance signals only",
+      "finalCommitSha": "8fdf848"
+    }
+  ],
+  "rule": "Synthesis may correlate source facts but may not overwrite a source project's authoritative fields, severity, measurement denominator, approval state, or closure state."
+}
