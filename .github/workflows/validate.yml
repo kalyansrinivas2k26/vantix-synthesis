@@ -1,0 +1,40 @@
+name: Validate VANTIX Synthesis Portfolio Preview
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Repository validation
+        run: python validation/validate_repository.py
+
+      - name: Graph validation
+        run: python scripts/validate_graph.py
+
+      - name: Reproduce exact-node evidence
+        run: |
+          node tests/offline_exact_node_tests.js \
+            workflows/VANTIX-Synthesis-Cross-Project-Governed-Correlation-v0.1-public.json \
+            workflows/VANTIX-Synthesis-Adversarial-Regression-v0.1-public.json \
+            /tmp/synthesis-offline.json
+          cmp /tmp/synthesis-offline.json evidence/offline-exact-node-test-results.json
+
+      - name: Verify SHA-256 ledger
+        run: python scripts/checksums.py --check
